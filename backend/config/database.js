@@ -4,7 +4,7 @@ require('dotenv').config();
 const connection = mysql.createConnection({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'Vinaogostoso27@1@2008',
+  password: process.env.DB_PASSWORD || '',     // aqui tu coloca a tua senha do mysql
   database: process.env.DB_NAME || 'superfood'
 });
 
