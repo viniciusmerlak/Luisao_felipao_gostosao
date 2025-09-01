@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico - SuperFood</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/historico.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🥗</span>
+                    <h1>SuperFood</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="receitas.html">Receitas</a></li>
+                        <li><a href="historico.html" class="active">Histórico</a></li>
+                        <li><a href="index.html#about">Sobre</a></li>
+                        <li><a href="index.html#contact">Contato</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="login-btn" id="loginBtn">Login</button>
+                    <button class="register-btn" id="registerBtn">Cadastre-se</button>
+                    <div id="userMenu" style="display: none;">
+                        <span id="userName"></span>
+                        <button class="logout-btn" id="logoutBtn">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>Seu Histórico de Evolução</h2>
+                <p>Acompanhe seu progresso ao longo do tempo</p>
+            </div>
+        </section>
+
+        <section class="history-content">
+            <div class="container">
+                <div class="history-controls">
+                    <button class="btn-primary" id="calculateImcBtn">Calcular IMC Atual</button>
+                </div>
+
+                <div class="history-stats">
+                    <div class="stat-card">
+                        <h3>Primeira Medição</h3>
+                        <p id="firstMeasurement">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Última Medição</h3>
+                        <p id="lastMeasurement">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Evolução</h3>
+                        <p id="evolutionStatus">-</p>
+                    </div>
+                </div>
+
+                <div class="history-chart">
+                    <canvas id="progressChart" width="400" height="200"></canvas>
+                </div>
+
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Peso (kg)</th>
+                                <th>Altura (m)</th>
+                                <th>IMC</th>
+                                <th>Classificação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Os dados do histórico serão preenchidos aqui via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="Seu email">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Senha</label>
+                <input type="password" id="loginPassword" placeholder="Sua senha">
+            </div>
+            <button class="form-submit" id="loginSubmit">Entrar</button>
+            <div class="form-toggle">
+                <p>Não tem uma conta? <a id="showRegister">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cadastro</h2>
+            <div class="form-group">
+                <label for="registerName">Nome</label>
+                <input type="text" id="registerName" placeholder="Seu nome completo">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" placeholder="Seu email">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Senha</label>
+                <input type="password" id="registerPassword" placeholder="Crie uma senha">
+            </div>
+            <button class="form-submit" id="registerSubmit">Cadastrar</button>
+            <div class="form-toggle">
+                <p>Já tem uma conta? <a id="showLogin">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cálculo de IMC -->
+    <div id="imcModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Calcular IMC</h2>
+            <div class="form-group">
+                <label for="imcWeight">Peso (kg)</label>
+                <input type="number" id="imcWeight" step="0.1" placeholder="Ex: 68.5">
+            </div>
+            <div class="form-group">
+                <label for="imcHeight">Altura (m)</label>
+                <input type="number" id="imcHeight" step="0.01" placeholder="Ex: 1.75">
+            </div>
+            <button class="form-submit" id="calculateImcSubmit">Calcular</button>
+            
+            <div id="imcResult" class="imc-result"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 SuperFood - Todos os direitos reservados</p>
+            <p>Projeto desenvolvido para conscientização sobre alimentação saudável</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/imc.js"></script>
+    <script src="scripts/historico.js"></script>
+</body>
+</html>
